@@ -8,8 +8,13 @@ class ArticlesController < ActionController::Base
   def create
     # render plain: params[:article].inspect
     @art = Article.new(art_params)
-    @art.save
-    redirect_to article_path(@art)
+    if @art.save
+      flash[:notice] = 'Your article was saved successfully'
+      redirect_to article_path(@art)
+    else
+      flash[:notice] = 'Your articles was not saved'
+      render :new
+    end
   end
 
   private
