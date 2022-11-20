@@ -9,7 +9,7 @@ class ArticlesController < ActionController::Base
     # render plain: params[:article].inspect
     @art = Article.new(art_params)
     @art.save
-    redirect_to articles_show(@art)
+    redirect_to article_path(@art)
   end
 
   private
