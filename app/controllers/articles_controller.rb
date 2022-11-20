@@ -17,6 +17,10 @@ class ArticlesController < ActionController::Base
     end
   end
 
+  def show
+    @art = Article.find(params[:id])
+  end
+
   private
 
   def art_params
