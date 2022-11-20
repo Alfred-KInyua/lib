@@ -1,9 +1,5 @@
 class ArticlesController < ActionController::Base
-  def index
-    @articles = Article.all
-  end
-
   def new
-    @articles = Article.all
+    @article = Article.new
   end
 end

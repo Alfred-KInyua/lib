@@ -1,7 +1,11 @@
 <h1>Add new article</h1>
 <%= link_to 'index page', articles_path%>
-<%= form_with do |form| %>
-  Form contents
+<%= form_with model: @article do |form| %>
+<div>
+<p><%= form.label :title%>
+<%= form.text_field :title%></p>
+<p><%= form.label :Description%>
+  <%= form.text_area :Description%></p>
+  <p><%=form.submit%></p>
+  </div>
 <% end %>
-<%=@articles%>
-<%= form_with%>
