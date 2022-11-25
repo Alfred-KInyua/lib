@@ -5,7 +5,9 @@ class ArticlesController < ActionController::Base
     @art = Article.new
   end
   def edit 
+    @art = Article.find(params[:id])
   end
+  
 
   def create
     # render plain: params[:article].inspect
@@ -18,7 +20,15 @@ class ArticlesController < ActionController::Base
      
     end
   end
-
+  def update
+    @art= Article.find(params[:id])
+   if @art.update(art_params)
+    flash[:notice] ='File updated successfully'
+    redirect_to article_path(@art)
+   else
+ render :edit
+   end
+  end
   def show
     @art = Article.find(params[:id])
   end
