@@ -1,23 +1,2 @@
 <h1>Edit existing article</h1>
-<h1>Add new article</h1>
-<% if @art.errors.any?%>
-<h2>The following errors prevented the article from being created </h2>
-<ul>
-   <%@art.errors.full_messages.each do |msg|%>
-     <li>
-       <%= msg %>
-    </li>
-   <%end%>
-</ul>
-
-<%end%>
-<%= link_to 'index page', articles_path%>
-<%= form_with model: @art do |form| %>
-<div>
-<p><%= form.label :title%><br/>
-<%= form.text_field :title%></p>
-<p><%= form.label :description%><br/>
-  <%= form.text_area :description%></p>
-  <p><%=form.submit%></p>
-  </div>
-<% end %>
+<%=render 'form'%>
