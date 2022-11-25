@@ -4,16 +4,18 @@ class ArticlesController < ActionController::Base
   def new
     @art = Article.new
   end
+  def edit 
+  end
 
   def create
     # render plain: params[:article].inspect
     @art = Article.new(art_params)
     if @art.save
-      flash[:notice] = 'Your article was saved successfully'
-      redirect_to article_path(@art)
+      flash[:notice] = 'Your article was created successfully'
+      redirect_to article_path(@art) # this is the show template 
     else
-      flash[:notice] = 'Your articles was not saved'
-      render :new
+      render :new   
+     
     end
   end
 
