@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ArticlesController < ActionController::Base
+  before_action :set_article, only:[:edit, :update, :show, :destroy]
   def index
     @articles = Article.all
   end
@@ -10,7 +11,7 @@ class ArticlesController < ActionController::Base
   end
 
   def edit
-    @art = Article.find(params[:id])
+ 
   end
 
   def create
@@ -26,7 +27,7 @@ class ArticlesController < ActionController::Base
   end
 
   def update
-    @art = Article.find(params[:id])
+
     if @art.update(art_params)
       flash[:success] = "The file was updated successfully."
       redirect_to article_path(@art)
@@ -36,11 +37,11 @@ class ArticlesController < ActionController::Base
   end
 
   def show
-    @art = Article.find(params[:id])
+  
   end
 
   def destroy
-    @art = Article.find(params[:id])
+
     @art.destroy
     flash[:success] = 'The articles item was successfully destroyed.'
     redirect_to articles_path
@@ -48,6 +49,9 @@ class ArticlesController < ActionController::Base
   
 
   private
+  def set_article
+    @art = Article.find(params[:id]) 
+  end
 
   def art_params
     params.require(:article).permit(:title, :description)
