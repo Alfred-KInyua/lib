@@ -28,7 +28,7 @@ class ArticlesController < ActionController::Base
   def update
     @art = Article.find(params[:id])
     if @art.update(art_params)
-      flash.notice = 'File updated successfully'
+      flash[:success] = "The file was updated successfully."
       redirect_to article_path(@art)
     else
       render :edit
@@ -38,6 +38,14 @@ class ArticlesController < ActionController::Base
   def show
     @art = Article.find(params[:id])
   end
+
+  def destroy
+    @art = Article.find(params[:id])
+    @art.destroy
+    flash[:success] = 'The articles item was successfully destroyed.'
+    redirect_to articles_path
+  end
+  
 
   private
 
